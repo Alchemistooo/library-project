@@ -32,13 +32,6 @@ function displayBooks(array) {
       tr.appendChild(td)
     };
   });
-  // for (let book in array) {
-  //   const tr = tbody.insertRow();
-  //   for (let data in array[book]) {
-  //     let info = array[book].data;
-  //     tr.insertCell().innerText = info;
-  //   };
-  // };
 };
 
 addBookToLibrary("The Hobbit", "J.R.R Tolkien", 255,"reading");
