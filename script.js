@@ -40,12 +40,12 @@ function displayBooks(array) {
 
 addBookToLibrary("The Hobbit", "J.R.R Tolkien", 255,"Reading");
 addBookToLibrary("Mistborn", "Brandon Sanderson", 1000, "Not started");
-
 displayBooks(myLibrary);
 
 const newBook = document.querySelector("#new-book");
 const dialog = document.querySelector("dialog");
 const closeBtn = document.querySelector("#close-btn");
+const form = document.querySelector("form");
 
 newBook.addEventListener("click", () => {
   dialog.showModal();
@@ -53,4 +53,14 @@ newBook.addEventListener("click", () => {
 
 closeBtn.addEventListener("click", () => {
   dialog.close();
+});
+
+form.addEventListener("submit", () => {
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const status = document.getElementById("status").value;
+
+  addBookToLibrary(title, author, pages, status);
+  displayBooks(myLibrary);
 });
