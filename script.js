@@ -1,5 +1,7 @@
+// Array to store books in library
 const myLibrary = [];
 
+// Book object constructor
 function Book(title, author, pages, read){
   if (!new.target) {
     throw Error("Must use 'new' operator when calling constructor")
@@ -13,12 +15,14 @@ function Book(title, author, pages, read){
   // };
 };
 
+// Creates a new book object and adds to library
 function addBookToLibrary(title, author, pages, read) {
   let book = new Book(title, author, pages, read);
   book.id = crypto.randomUUID();
   myLibrary.push(book);
 };
 
+// Generates the table displayed on the page
 function displayBooks(array) {
   const tbody = document.querySelector("tbody");
 
@@ -34,7 +38,19 @@ function displayBooks(array) {
   });
 };
 
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 255,"reading");
-addBookToLibrary("Mistborn", "Brandon Sanderson", 1000, "not read");
+addBookToLibrary("The Hobbit", "J.R.R Tolkien", 255,"Reading");
+addBookToLibrary("Mistborn", "Brandon Sanderson", 1000, "Not started");
 
 displayBooks(myLibrary);
+
+const newBook = document.querySelector("#new-book");
+const dialog = document.querySelector("dialog");
+const closeBtn = document.querySelector("#close-btn");
+
+newBook.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeBtn.addEventListener("click", () => {
+  dialog.close();
+});
