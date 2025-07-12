@@ -2,19 +2,19 @@
 const myLibrary = [];
 
 // Book object constructor
-function Book(title, author, pages, read){
+function Book(title, author, pages, status){
   if (!new.target) {
     throw Error("Must use 'new' operator when calling constructor")
   };
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.status = status;
 };
 
 // Creates a new book object and adds to library
-function addBookToLibrary(title, author, pages, read) {
-  let book = new Book(title, author, pages, read);
+function addBookToLibrary(title, author, pages, status) {
+  let book = new Book(title, author, pages, status);
   book.id = crypto.randomUUID();
   myLibrary.push(book);
 };
@@ -25,14 +25,27 @@ function displayBooks(array) {
 
   array.forEach(book => {
     const tr = document.createElement("tr");
+    
     tr.setAttribute("data-book-id", book.id);
     tbody.appendChild(tr);
-
+    
     for (const prop in book) {
       const td = document.createElement("td");
       td.textContent = book[prop];
       tr.appendChild(td)
     };
+    
+    const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("id", "delete-btn");
+    deleteButton.setAttribute("class", "modify-btns");
+    deleteButton.textContent = "Remove";
+    tr.appendChild(deleteButton);
+
+    const editButton = document.createElement("button");
+    editButton.setAttribute("id", "edit-btn");
+    editButton.setAttribute("class", "modify-btns");
+    editButton.textContent = "Change status";
+    tr.appendChild(editButton);
   });
 };
 
