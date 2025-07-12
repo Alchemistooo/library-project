@@ -10,9 +10,6 @@ function Book(title, author, pages, read){
   this.author = author;
   this.pages = pages;
   this.read = read;
-  // this.info = function () {
-  //   return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
-  // };
 };
 
 // Creates a new book object and adds to library
@@ -28,6 +25,7 @@ function displayBooks(array) {
 
   array.forEach(book => {
     const tr = document.createElement("tr");
+    tr.setAttribute("data-book-id", book.id);
     tbody.appendChild(tr);
 
     for (const prop in book) {
