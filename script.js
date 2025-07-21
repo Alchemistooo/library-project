@@ -36,13 +36,13 @@ function displayBooks(array) {
     };
     
     const deleteButton = document.createElement("button");
-    deleteButton.setAttribute("id", "delete-btn");
+    deleteButton.setAttribute("class", "delete-btn");
     deleteButton.setAttribute("class", "modify-btns");
     deleteButton.textContent = "Remove";
     tr.appendChild(deleteButton);
 
     const editButton = document.createElement("button");
-    editButton.setAttribute("id", "edit-btn");
+    editButton.setAttribute("class", "edit-btn");
     editButton.setAttribute("class", "modify-btns");
     editButton.textContent = "Change status";
     tr.appendChild(editButton);
@@ -57,6 +57,8 @@ const newBook = document.querySelector("#new-book");
 const dialog = document.querySelector("dialog");
 const closeBtn = document.querySelector("#close-btn");
 const form = document.querySelector("form");
+const deleteBtn = document.querySelector(".delete-btn");
+const editBtn = document.querySelector(".edit-btn");
 
 newBook.addEventListener("click", () => {
   dialog.showModal();
@@ -75,3 +77,7 @@ form.addEventListener("submit", () => {
   addBookToLibrary(title, author, pages, status);
   displayBooks(myLibrary);
 });
+
+deleteBtn.addEventListener("click", () => {
+  deleteBtn.parentElement.remove();
+})
